@@ -2,14 +2,25 @@
   <div id="app">
     <router-view></router-view>
 
-    <Footer></Footer>
+    <Footer v-show="$route.meta.showFooter"></Footer>
   </div>
 </template>
 
 <script>
 import Footer from './components/Footer/Footer'
+// import {reqCaptcha,reqFoodType} from './api/index'
+//
+// reqCaptcha().then(function (res){
+//   console.log(res)
+// })
+// reqFoodType().then(function (res){
+//   console.log(res)
+// })
 
 export default {
+  mounted() {
+    this.$store.dispatch('get_userinfo')
+  },
   name: 'App',
   components: {
   Footer
